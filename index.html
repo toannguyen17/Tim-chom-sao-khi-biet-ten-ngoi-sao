@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tìm chòm sao khi biết tên ngôi sao</title>
+</head>
+<body>
+	<p>Nhập tên ngôi sao để tìm chòm sao tương ứng.</p>
+	<button onclick="getNameStar()">Nhập tên ngôi sao</button>
+	<script type="text/javascript">
+		let star  = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+		let group = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+		function getNameStar() {
+			let name = prompt('Nhập tên ngôi sao.');
+			getGroup(name);
+		}
+		function getGroup(name) {
+			let index = -1;
+			for (let i = 0; i < star.length; i++) {
+				let getStar = star[i];
+			 	let check = new RegExp('^' + getStar + '$', 'i');
+				check     = check.test(name);
+				if (check) {
+					index = i;
+					name = getStar;
+					break;
+				}
+			 }
+			 if (index === -1) {
+			 	alert('Không có chòm sao tương ứng.');
+			 }else{
+			 	alert('Sao "'+name+'" thuộc chòm sao: '+group[index]);
+			 }
+		}
+	</script>
+</body>
+</html>
